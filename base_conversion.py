@@ -21,15 +21,18 @@ class Number():
         num=self.num
         digits=self.digitslist[b-2]
         digitslist=list(reversed(list(range(digits))))
-        r=0
+        extra=["A","B","C","D","E","F"]
+        r=""
         for k in digitslist:
             i, num=divmod(num,b**k)
-            r=r+i*(10**k)
+            if i>=10:
+                i=extra[i-10]
+            r=r+str(i)
         return r
             
 
 if __name__=="__main__":
-    orig=242
-    base=3
+    orig=31
+    base=16
     num=Number(orig)
     print(num.get_new_number(base))
